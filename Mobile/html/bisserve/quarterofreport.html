@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <!-- necessary -->
+    <meta name="keywords" content="1,2,3">
+    <meta name="description" content="">
+    <!-- description -->
+    <meta name="renderer" content="webkit">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>十五分钟报告</title>
+    <!-- base -->
+    <link href="../../css/comm/base-m.css" rel="stylesheet">
+    <link href="../../css/bisserve/bisserve.css" rel="stylesheet">
+</head>
+<body>
+    <div class="clear pd-10 bg-white clear">
+        <div class="clear full-w bg-white radius-5 qu_re_main_box overflow-h mb-20">
+            <!-- 用户信息 -->
+            <div class="clear full-w bg-53A6FF pt-30-20-iphone5 pb-20">
+                <div class="clear col-xs-6 pl-0 pr-0">
+                    <div class="clear full-w pl-25 pr-25 pb-10 text-center">
+                        <img class="full-radius main_header_img full-w" src="../../img/quarterofreport/test_header.jpg" alt="">
+                    </div>
+                    <p class="line-h-30 pl-25 pr-25 col-white f-w-700 text-center f-26-20-iphone5">
+                        王小姐
+                    </p>
+                </div>
+                <div class="clear col-xs-6 pl-0 pr-0">
+                    <p class="col-white f-20-18-iphone5 line-h-35-28-iphone5 f-w-700">
+                        性别：女
+                    </p>
+                    <p class="col-white f-20-18-iphone5 line-h-35-28-iphone5 f-w-700">
+                        身高：172cm
+                    </p>
+                    <p class="col-white f-20-18-iphone5 line-h-35-28-iphone5 f-w-700">
+                        体重：52kg
+                    </p>
+                    <p class="col-white f-20-18-iphone5 line-h-35-28-iphone5 f-w-700">
+                        运动状况：经常
+                    </p>
+                    <p class="col-white f-20-18-iphone5 line-h-35-28-iphone5 f-w-700">
+                        身材体型：偏瘦
+                    </p>
+                </div>
+            </div>
+            <!-- 心博总数 -->
+            <div class="clear full-w bg-white pd-10">
+                <div class="clear col-xs-7 pl-0 pr-0 pt-15">
+                    <div class="clear pl-40-30-iphone5 pos-r mb-15">
+                        <p class="col-53a6ff line-h-25 f-18-16-iphone5 f-w text-overflow-1">
+                            正常心搏总数：
+                        </p>
+                        <p class="col-53a6ff line-h-25 f-18-16-iphone5 f-w text-overflow-1">
+                            60%（1235次）
+                        </p>
+                        <div class="clear pos-a t-3-5-iphone5 l-0 radius-5 img-25-20 bg-B4EBFF">
+                            
+                        </div>
+                    </div>
+                    <div class="clear pl-40-30-iphone5 pos-r mb-15">
+                        <p class="col-53a6ff line-h-25 f-18-16-iphone5 f-w text-overflow-1">
+                            过慢心搏总数：
+                        </p>
+                        <p class="col-53a6ff line-h-25 f-18-16-iphone5 f-w text-overflow-1">
+                            21%（5648次）
+                        </p>
+                        <div class="clear pos-a t-3-5-iphone5 l-0 radius-5 img-25-20 bg-9CCDFE">
+                            
+                        </div>
+                    </div>
+                    <div class="clear pl-40-30-iphone5 pos-r">
+                        <p class="col-53a6ff line-h-25 f-18-16-iphone5 f-w text-overflow-1">
+                            过快心搏总数： 
+                        </p>
+                        <p class="col-53a6ff line-h-25 f-18-16-iphone5 f-w text-overflow-1">
+                            19%（5568次）
+                        </p>
+                        <div class="clear pos-a t-3-5-iphone5 l-0 radius-5 img-25-20 bg-258DFB">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="clear col-xs-5 pl-0 pr-0">
+                    <canvas id="photo_re_sum" width="100%" height="100%"></canvas>
+                    <div class="clear full-w">
+                        <p class="text-center col-53a6ff f-20-18-iphone5 f-w line-h-25">
+                            心搏总数：
+                        </p>
+                        <p class="text-center col-53a6ff f-20-18-iphone5 f-w line-h-25 mb-10">
+                            896
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- 15分钟心率曲线 -->
+            <div class="clear full-w bg-white pd-10 h-245">
+                <p class="line-h-25 h-25">
+                    <span class="col-white f-16 f-w-600 dis-ib pl-10 pr-10 line-h-27 h-25 bg-53A6FF radius-10">15分钟心率曲线</span>
+                </p>
+                <div class="clear full-w quarter_eccentricity_box pos-r h-200">
+                    <canvas id="quarter_eccentricity" class="full-w h-200">
+                        你的浏览器不支持canvas。
+                    </canvas>
+                </div>
+            </div>
+            <!-- 动态心电概况与技术参数 -->
+            <div class="clear full-w bg-white pt-10 pb-10 pl-10 pr-0">
+                <p class="line-h-25">
+                    <span class="col-white f-16 f-w-600 dis-ib pl-10 pr-10 line-h-27 h-25 bg-53A6FF radius-10">动态心电概况与技术参数</span>
+                </p>
+                <div class="clear">
+                    <div class="clear">
+                        <div class="clear col-xs-6 mt-10 pl-0 pr-0 pull-left">
+                            <div class="clear h-35">
+                                <div class="clear pull-left ecg_parameter_v1">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        平均心率：
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">76</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3 bg_qudate_rise"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear h-35">
+                                <div class="clear pull-left ecg_parameter_v2">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        PR：
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">160ms</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3 bg_qudate_deciline"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear h-35">
+                                <div class="clear pull-left ecg_parameter_v3">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        P波：
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">300ms</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear col-xs-6 mt-10 pl-0 pr-0 pull-left">
+                            <div class="clear h-35">
+                                <div class="clear pull-left ecg_parameter_v4">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        QRS：
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">76ms</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear h-35">
+                                <div class="clear pull-left ecg_parameter_v5">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        QT：
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">400ms</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear h-35">
+                                <div class="clear pull-left ecg_parameter_v6">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        QT/QTc： 
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">265ms</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear h-35 full-w">
+                        <div class="clear pull-left ecg_parameter_v7">
+                            <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                P/QRS/T：
+                            </div>
+                            <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                <span class="col-53a6ff f-16-14-iphone5 f-w">30/35/29deg</span>
+                                <spanw-8 h-12 pos-r t-1 ml-3 bg_qudate_rise"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear h-35 full-w">
+                        <div class="clear pull-left ecg_parameter_v8">
+                            <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                RII/SVI： 
+                            </div>
+                            <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                <span class="col-53a6ff f-16-14-iphone5 f-w">2.5/0.12mV</span>
+                                <spanw-8 h-12 pos-r t-1 ml-3 bg_qudate_rise"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 最大心率 -->
+            <div class="clear full-w bg-white pd-10">
+                <p class="line-h-25 h-25 mb-10">
+                    <span class="col-white f-18 f-w-600 dis-ib pl-10 pr-10 line-h-27 h-25 bg-53A6FF radius-10">最大心率：120</span>
+                </p>
+                <div class="clear full-w pos-r h-200 hrmax_box">
+                    <canvas id="hrmax" class="full-w h-200">
+                        你的浏览器不支持canvas。
+                    </canvas>
+                    <div class="clear pos-a z-99 r-10 b-5 cur-p hrmax_conver_screen">
+                        <img class="img-30" src="../../img/quarterofreport/conversion_screen.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- 最小心率 -->
+            <div class="clear full-w bg-white pd-10">
+                <p class="line-h-25 h-25 mb-10">
+                    <span class="col-white f-18 f-w-600 dis-ib pl-10 pr-10 line-h-27 h-25 bg-53A6FF radius-10">最小心率：76</span>
+                </p>
+                <div class="clear full-w pos-r h-200 hrmin_box">
+                    <canvas id="hrmin" class="full-w h-200">
+                        你的浏览器不支持canvas。
+                    </canvas>
+                    <div class="clear pos-a z-99 r-10 b-5 cur-p hrmin_conver_screen">
+                        <img class="img-30" src="../../img/quarterofreport/conversion_screen.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- 心率异常 -->
+            <div class="clear full-w bg-white pd-10">
+                <p class="line-h-25">
+                    <span class="col-white f-16 f-w-600 dis-ib pl-10 pr-10 line-h-27 h-25 bg-53A6FF radius-10">心律异常</span>
+                </p>
+                <div class="clear">
+                    <div class="clear">
+                        <div class="clear col-xs-6 mt-10 pl-0 pr-0 pull-left">
+                            <div class="clear h-35">
+                                <div class="clear pull-left heart_abnormal_v1">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        PVC：
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">5545(50%)</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear h-35">
+                                <div class="clear pull-left heart_abnormal_v2">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        AF：
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">524(10%)</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear h-35">
+                                <div class="clear pull-left heart_abnormal_v3">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        VT：
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">50(2%)</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear col-xs-6 mt-10 pl-0 pr-0 pull-left">
+                            <div class="clear h-35">
+                                <div class="clear pull-left heart_abnormal_v4">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        PAC：
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">5487(22%)</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear h-35">
+                                <div class="clear pull-left heart_abnormal_v5">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        SVT：
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">174(4%)</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ST/QTC 异常 -->
+            <div class="clear full-w bg-white pd-10">
+                <p class="line-h-25">
+                    <span class="col-white f-16 f-w-600 dis-ib pl-10 pr-10 line-h-27 h-25 bg-53A6FF radius-10">ST/QTC 异常</span>
+                </p>
+                <div class="clear">
+                    <div class="clear">
+                        <div class="clear col-xs-6 mt-10 pl-0 pr-0 pull-left">
+                            <div class="clear h-35">
+                                <div class="clear pull-left stqtc_abnormal_v1">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        TS：
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">5545</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear col-xs-6 mt-10 pl-0 pr-0 pull-left">
+                            <div class="clear h-35">
+                                <div class="clear pull-left stqtc_abnormal_v2">
+                                    <div class="clear pull-left pl-0 pr-0 col-a2cffe f-16-14-iphone5 f-w h-35 line-h-35">
+                                        QTc：
+                                    </div>
+                                    <div class="clear pull-left pl-0 pr-0 h-35 line-h-35">
+                                        <span class="col-53a6ff f-16-14-iphone5 f-w">5487</span>
+                                        <span class="dis-ib w-8 h-12 pos-r t-1 ml-3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PVC/PAC -->
+            <div class="clear full-w bg-white pd-10">
+                <p class="line-h-25 h-25 mb-10">
+                    <span class="col-white f-18 f-w-600 dis-ib pl-10 pr-10 line-h-27 h-25 bg-53A6FF radius-10">PVC/PAC</span>
+                </p>
+                <div class="clear full-w pos-r h-200 hrpvac_box">
+                    <!-- 背景 -->
+                    <canvas id="hrpvac_bg" class="full-w h-200">
+                        你的浏览器不支持canvas。
+                    </canvas>
+                    <!-- 曲线 -->
+                    <div class="clear full-w h-200 pos-a t-0 l-0 z-99 pt-10 pl-10 pr-10">
+                        <div class="clear full-w hrpvac_in_box h-190 pos-r overflow-a">
+                            <canvas id="hrpvac" class="h-190 pos-a t-0 l-0 ">
+                                你的浏览器不支持canvas。
+                            </canvas>
+                        </div>
+                    </div>
+                    <!-- 旋转按钮 -->
+                    <div class="clear pos-a z-99 r-10 b-5 cur-p hrpvac_conver_screen">
+                        <img class="img-30" src="../../img/quarterofreport/conversion_screen.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- PVC/PAC 统计： -->
+            <div class="clear full-w bg-white pd-10">
+                <p class="line-h-25 h-25 mb-10">
+                    <span class="col-white f-18 f-w-600 dis-ib pl-10 pr-10 line-h-27 h-25 bg-53A6FF radius-10">PVC/PAC 统计：14/10</span>
+                </p>
+                <div class="clear full-w pos-r pt-20 pb-20 pr-0">
+                    <div class="clear pull-left w-10p pl-0 pr-5">
+                        <p class="h-30 line-h-30 col-a2cffe f-14 f-w">
+                            PVC
+                        </p>
+                        <p class="h-30 line-h-30 col-a2cffe f-14 f-w">
+                            PAC
+                        </p>
+                    </div>
+                    <div class="clear pull-left w-90p pl-0 pr-0">
+                        <div class="clear full-w h-60 bor bor-2px bor-col-A2CFFE">
+                            <div class="clear h-28 bor bor-col-A2CFFE bor-b">
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    1
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    2
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    3
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    4
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    5
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    6
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    7
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    8
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    9
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    10
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    11
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    12
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    13
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    14
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 f-12 col-53a6ff w-06p">
+                                    15
+                                </div>
+                            </div>
+                            <div class="clear h-28 bor bor-col-A2CFFE bor-t">
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    1
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    2
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    3
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    4
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    5
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    6
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    7
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    8
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    9
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    10
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    11
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    12
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    13
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 bor bor-r bor-col-A2CFFE bor-2px f-12 col-53a6ff w-06p">
+                                    14
+                                </div>
+                                <div class="clear pull-left text-center line-h-27 h-27 f-12 col-53a6ff w-06p">
+                                    15
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear full-w h-10 mt-5">
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left">1m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left">2m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left">3m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left">4m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left">5m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left">6m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left">7m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left">8m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left">9m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left pos-r ml--5">10m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left pos-r ml--5">11m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left pos-r ml--5">12m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left pos-r ml--5">13m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left pos-r ml--5">14m</span>
+                            </div>
+                            <div class="clear pull-left line-h-10 h-10 w-06p f-w">
+                                <span class="f-12 transform_scale_07 col-53a6ff dis-ib pull-left pos-r ml--5">15m</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 总结建议 -->
+            <div class="clear full-w bg-white pt-10 pb-10 pl-10 pr-5">
+                <p class="line-h-35 text-center h-35">
+                    <span class="col-white f-22 f-w-600 dis-ib pl-20 pr-20 line-h-35 h-35 bg-53A6FF radius-10">总结建议</span>
+                </p>
+                <p class="col-6aa4d9 line-h-35 f-18 mt-20 mb-20 family-h">
+                    您的心率整体过快，请注意饮食作息，如您感到身体不适请前往医院检查治疗，感谢您的使用。
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- 最大心率全屏弹出部分 -->
+    <div class="clear affix full-w t-0 l-0 win_h z-999 dis-n hrmax_full_screen">  
+        <div class="clear full-wh pos-r bg-black hrmax_full_box">
+            <canvas id="hrmax_full" class="full-wh">
+                你的浏览器不支持canvas。
+            </canvas>
+        </div>
+        <img class="pos-a b-10 r-10 img-30 hrmax_full_box_close" src="../../img/quarterofreport/close_v2.png" alt="">
+    </div>
+    <!-- 最小心率全屏弹出部分 -->
+    <div class="clear affix full-w t-0 l-0 win_h z-999 dis-n hrmin_full_screen">  
+        <div class="clear full-wh pos-r bg-black hrmin_full_box">
+            <canvas id="hrmin_full" class="full-wh">
+                你的浏览器不支持canvas。
+            </canvas>
+        </div>
+        <img class="pos-a b-10 r-10 img-30 hrmin_full_box_close" src="../../img/quarterofreport/close_v2.png" alt="">
+    </div>
+    <!-- PVC/PAC全屏弹出部分 -->
+    <div class="clear affix full-w t-0 l-0 win_h z-999 dis-n hrpvac_full_screen">  
+        <div class="clear full-wh pos-r hrpvac_full_box">
+            <!-- 背景部分 -->
+            <canvas id="hrpvac_full_bg" class="full-wh">
+                你的浏览器不支持canvas。
+            </canvas>
+            <!-- 曲线部分 -->
+            <div class="clear pos-a full-wh t-0 l-0 z-999 pt-15 pb-15 pr-15">
+                <div class="clear full-wh pos-r full_hrpvac_in_box overflow-a">
+                    <canvas id="hrpvac_full" class="pos-a t-0 l-0 full-w">
+                        你的浏览器不支持canvas。
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <img class="pos-a b-10 r-10 img-30 hrpvac_full_box_close z-999" src="../../img/quarterofreport/close_v2.png" alt="">
+    </div>
+    <script src="../../js/comm/jquery.min.js"></script>
+    <script src="../../ctrl/layer/layer.js"></script>
+    <script src="../../js/comm/Chart.bundle.min.js"></script>
+    <script src="../../js/report/quarterofreport_analogdata.js"></script>
+    <script src="../../js/report/quarterofreport.js"></script>
+
+</body>
+
+</html>
